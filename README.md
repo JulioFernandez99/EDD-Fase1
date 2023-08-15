@@ -7,3 +7,4 @@
 - **Carga de empleados**
     - Carga masiva
     - Carga manual
+    - Crear proyecto
