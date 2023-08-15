@@ -1,0 +1,3 @@
+C:/Users/Lenovo/Desktop/Proyecto1_EDD/cmake-build-debug/CMakeFiles/Proyecto1_EDD.dir
+C:/Users/Lenovo/Desktop/Proyecto1_EDD/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Lenovo/Desktop/Proyecto1_EDD/cmake-build-debug/CMakeFiles/rebuild_cache.dir
