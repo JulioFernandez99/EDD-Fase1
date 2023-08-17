@@ -131,6 +131,7 @@ string getRuta(){
 void menuPoryectos(){
     cout <<"Nombre:"; cin>>name_py;
     cout <<"Prioridad:"; cin>>priori_py;
+    priori_py= toupper(priori_py);
     colaPriori->push(name_py,priori_py);
 }
 

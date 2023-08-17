@@ -22,6 +22,8 @@ Nodo::Nodo(string user_name,string user_pass,string user_puesto) {
     this->user_name=user_name;
     this->user_pass=user_pass;
     this->user_puesto=user_puesto;
+    this->siguiente=NULL;
+    this->anterior=NULL;
 }
 
 /*-------Clase Lista-------*/
@@ -34,7 +36,6 @@ public:
     void verLista();
     string buscar(string user_name,string user_pass);
     void cargaMasiva(string ruta);
-
     ListaDobleCircular();
 
 };
@@ -60,15 +61,11 @@ void ListaDobleCircular::push(string user_name,string user_pass,string user_pues
 
 void ListaDobleCircular::verLista(){
     Nodo *aux = this->primero;
-    int contador = 0;
-    while(this->size > contador)
-    {
-        cout << aux->user_name << endl;
-        aux = aux->siguiente;
-        contador++;
+    while (aux->siguiente!=primero){
+        cout<<aux->user_name<<endl;
+        aux=aux->siguiente;
     }
-    delete aux;
-
+    cout<<aux->user_name<<endl;
 }
 
 string ListaDobleCircular::buscar(string user_name, string user_pass){

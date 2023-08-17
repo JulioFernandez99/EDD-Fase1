@@ -18,6 +18,8 @@ NodoPriori::NodoPriori(string nombre_py, char priori_,string contadorProyecto) {
     this->nombre_proyecto=nombre_py;
     this->prioridad=priori_;
     this->numeroProyecto=contadorProyecto;
+    this->siguiente=NULL;
+    this->anterior=NULL;
 }
 
 class ColaPrioridad{
@@ -26,7 +28,6 @@ public:
     NodoPriori *primero;
     NodoPriori *ultimo;
     void push(string nombre_,char priori_);
-    void ordenarCola();
     void verCola();
     void mover(NodoPriori *inicio,NodoPriori *final);
     ColaPrioridad();
@@ -37,64 +38,6 @@ ColaPrioridad::ColaPrioridad() {
     this->primero=NULL;
     this->ultimo=NULL;
 }
-
-
-void ColaPrioridad::mover(NodoPriori *inicio, NodoPriori *final) {
-
-    string nombre,numero;
-    char prioridad;
-
-    inicio->nombre_proyecto=final->nombre_proyecto;
-    inicio->prioridad=final->prioridad;
-    inicio->numeroProyecto=final->numeroProyecto;
-
-    final->nombre_proyecto=nombre;
-    final->prioridad=prioridad;
-    final->numeroProyecto=numero;
-}
-
-void ColaPrioridad::ordenarCola() {
-
-    if (this->primero==NULL){
-        return;
-    }
-    cout<<"entro"<<endl;
-    bool swapped= true;
-    NodoPriori* temp;
-    NodoPriori* end = NULL;
-
-    do {
-
-        swapped = false;
-        temp = this->primero;
-
-        while (temp->siguiente != end) {
-            if (temp->prioridad > temp->siguiente->prioridad) {
-                // Realiza el intercambio de nodos
-
-                string nombre=temp->nombre_proyecto;
-                string numero=temp->numeroProyecto;
-                char priori = temp->prioridad;
-
-
-
-                temp->nombre_proyecto = temp->siguiente->nombre_proyecto;
-                temp->prioridad = temp->siguiente->prioridad;
-                temp->numeroProyecto = temp->siguiente->numeroProyecto;
-
-                temp->siguiente->nombre_proyecto = nombre;
-                temp->siguiente->prioridad = priori;
-                temp->siguiente->numeroProyecto = numero;
-
-                swapped = true;
-            }
-            temp = temp->siguiente;
-        }
-        end = temp;
-    } while (swapped);
-
-}
-
 
 void ColaPrioridad::push(string nombre_, char priori_) {
     string cadenaCont="PY-";
@@ -108,32 +51,100 @@ void ColaPrioridad::push(string nombre_, char priori_) {
         cadenaCont+=to_string(contadorProyectos);
     }
 
-
-
     NodoPriori *nuevoNodo=new NodoPriori(nombre_, priori_,cadenaCont);
-    if (this->primero==NULL){
-        this->primero=this->ultimo=nuevoNodo;
-    } else{
-        ultimo->siguiente=nuevoNodo;
-        nuevoNodo->anterior=ultimo;
+    if(primero==NULL){
+        primero=nuevoNodo;
         ultimo=nuevoNodo;
         contadorProyectos++;
-        //ordenarCola();
+        return;
     }
 
+    NodoPriori *temp=primero;
+    while (temp!=NULL){
+
+        if ( (nuevoNodo->prioridad > temp->prioridad || nuevoNodo->prioridad == temp->prioridad) && (temp->siguiente==NULL ) ) {
+            //Si el que viene es mayor
+
+            temp->siguiente = nuevoNodo;
+            nuevoNodo->anterior=temp;
+            ultimo = nuevoNodo;
+            contadorProyectos++;
+            return;
+        }
+        else if ((nuevoNodo->prioridad < temp->prioridad || nuevoNodo->prioridad == temp->prioridad) && temp->anterior==NULL){
+            //Si el que viene es menor
+
+            temp->anterior=nuevoNodo;
+            nuevoNodo->siguiente=temp;
+            primero=nuevoNodo;
+
+            contadorProyectos++;
+            return;
+        }
+        else if ((temp->prioridad  > nuevoNodo->prioridad) && temp->anterior!=NULL ){
+            //cout<<"Entro"<<nuevoNodo->prioridad<<endl;
+            temp->anterior->siguiente=nuevoNodo;
+            temp->anterior=nuevoNodo;
+            nuevoNodo->anterior=temp->anterior;
+            nuevoNodo->siguiente=temp;
+            contadorProyectos++;
+            return;
+
+        }
+
+
+
+        temp=temp->siguiente;
+    }
 
 }
 
 void ColaPrioridad::verCola() {
-
-    NodoPriori *temp=this->primero;
+    NodoPriori *temp=primero;
     while (temp!=NULL){
-        cout<<"["<<temp->nombre_proyecto<<","<<temp->prioridad<<","<<temp->numeroProyecto<<"]->";
+        cout<<"["<<temp->numeroProyecto<<","<<temp->prioridad<<"]"<<",";
         temp=temp->siguiente;
     }
-    delete temp;
+
 }
 
 
+ int main(){
 
+    ColaPrioridad *cl=new ColaPrioridad();
+     cl->push("Hola1",'A');
+     cl->push("Hola1",'B');
+     cl->push("Hola1",'C');
+     cl->push("Hola1",'D');
+     cl->push("Hola1",'E');
+     cl->push("Hola1",'F');
+     cl->push("Hola1",'G');
+     cl->push("Hola1",'H');
+     cl->push("Hola1",'I');
+     cl->push("Hola1",'J');
+     cl->push("Hola1",'K');
+     cl->push("Hola1",'L');
+     cl->push("Hola1",'M');
+     cl->push("Hola1",'N');
+     cl->push("Hola1",'O');
+     cl->push("Hola1",'P');
+     cl->push("Hola1",'Q');
+     cl->push("Hola1",'R');
+     cl->push("Hola1",'S');
+     cl->push("Hola1",'T');
+     cl->push("Hola1",'U');
+     cl->push("Hola1",'V');
+     cl->push("Hola1",'W');
+     cl->push("Hola1",'X');
+     cl->push("Hola1",'Y');
+     cl->push("Hola1",'Z');
+
+
+
+
+
+
+    cl->verCola();
+    return 0;
+}
 
