@@ -1,0 +1,110 @@
+# depslib dependency file v1.0
+1692683673 source:c:\users\lenovo\desktop\edd_py1\include\empleado.cpp
+	"Empleado.h"
+
+1692683674 c:\users\lenovo\desktop\edd_py1\include\empleado.h
+	<string>
+
+1692683840 source:c:\users\lenovo\desktop\edd_py1\include\nodolista.cpp
+	"NodoLista.h"
+
+1692683778 c:\users\lenovo\desktop\edd_py1\include\nodolista.h
+	<string>
+	"Empleado.h"
+
+1692899028 source:c:\users\lenovo\desktop\edd_py1\main.cpp
+	<iostream>
+	<windows.h>
+	<commdlg.h>
+	<map>
+	<vector>
+	<string>
+	<cstdlib>
+	<chrono>
+	<thread>
+	"Cola.h"
+	"Lista.h"
+	"ListaD.h"
+	"Matriz.h"
+
+1692893914 c:\users\lenovo\desktop\edd_py1\include\lista.h
+	<cctype>
+	<string>
+	"NodoLista.h"
+
+1692898955 source:c:\users\lenovo\desktop\edd_py1\include\lista.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<sstream>
+	"Lista.h"
+
+1692685027 source:c:\users\lenovo\desktop\edd_py1\include\nodocola.cpp
+	"NodoCola.h"
+
+1692685051 c:\users\lenovo\desktop\edd_py1\include\nodocola.h
+	"Proyecto.h"
+	<string>
+
+1692732388 c:\users\lenovo\desktop\edd_py1\include\proyecto.h
+	<iostream>
+	<string>
+
+1692732419 source:c:\users\lenovo\desktop\edd_py1\include\proyecto.cpp
+	"Proyecto.h"
+
+1692892086 c:\users\lenovo\desktop\edd_py1\include\cola.h
+	"NodoCola.h"
+
+1692893916 source:c:\users\lenovo\desktop\edd_py1\include\cola.cpp
+	<iostream>
+	<string>
+	<fstream>
+	"Cola.h"
+	"Proyecto.h"
+
+1692723252 source:c:\users\lenovo\desktop\edd_py1\include\nodomatriz.cpp
+	"NodoMatriz.h"
+
+1692731978 c:\users\lenovo\desktop\edd_py1\include\nodomatriz.h
+	<string>
+	"Proyecto.h"
+	"Empleado.h"
+
+1692894905 source:c:\users\lenovo\desktop\edd_py1\include\matriz.cpp
+	"Matriz.h"
+	<cctype>
+	<string>
+
+1692894905 c:\users\lenovo\desktop\edd_py1\include\matriz.h
+	<algorithm>
+	<cctype>
+	<fstream>
+	<iostream>
+	<string>
+	<string.h>
+	<chrono>
+	<thread>
+	"NodoMatriz.h"
+	"NodoLista.h"
+	"Cola.h"
+	"Proyecto.h"
+	"Empleado.h"
+	"Lista.h"
+
+1692728206 source:c:\users\lenovo\desktop\edd_py1\include\listad.cpp
+	"ListaD.h"
+	<iostream>
+	<string>
+
+1692728189 c:\users\lenovo\desktop\edd_py1\include\listad.h
+	"NodoD.h"
+	<string>
+
+1692728133 c:\users\lenovo\desktop\edd_py1\include\nodod.h
+	<string>
+
+1692728146 source:c:\users\lenovo\desktop\edd_py1\include\nodod.cpp
+	"NodoD.h"
+
