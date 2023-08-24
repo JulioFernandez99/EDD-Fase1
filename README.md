@@ -4,7 +4,9 @@
 
 ## Partes terminadas:
 
-- **Carga de empleados**
+- **Empleados**
     - Carga masiva
     - Carga manual
-    - Crear proyecto
+-**Proyectos**
+    -Cola de prioridad
+    -Asignar proyectos
