@@ -10,7 +10,6 @@
 -**Proyectos**
     -Cola de prioridad
     -Asignar proyectos
-
 -**Tareas**
-    -Cread tareas
+    -Crear tareas
     -Asignar tareas
