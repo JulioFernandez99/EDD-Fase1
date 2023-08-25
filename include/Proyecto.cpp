@@ -6,6 +6,7 @@ Proyecto::Proyecto(std::string nombre, std::string codigo,char prioridad)
     this->nombre_proyecto=nombre;
     this->numeroProyecto=codigo;
     this->prioridad=prioridad;
+
 }
 
 Proyecto::~Proyecto()

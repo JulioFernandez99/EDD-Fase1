@@ -323,6 +323,6 @@ void Matriz::Graficar()
     codigo_cmd+=nombre_imagen;
     char j[codigo_cmd.size()+1];
     strcpy(j,codigo_cmd.c_str());
-    cout << j << endl;
+    //cout << j << endl;
     system(j);
 }

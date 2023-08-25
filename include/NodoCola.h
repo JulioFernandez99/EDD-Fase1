@@ -1,6 +1,7 @@
 #ifndef NODOCOLA_H
 #define NODOCOLA_H
 #include "Proyecto.h"
+#include "ListaD.h"
 #include <string>
 
 using namespace std;

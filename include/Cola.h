@@ -13,9 +13,11 @@ class Cola
         void push(string nombre_,char priori_);
         void verCola();
         bool buscar(string numero_py);
+        void agregarTarea(string numero_py,string tarea,string encargado);
         string getNameProyecto(string numero_py);
         void graficar();
         void pop();
+        void verTareas();
         string textoGrafo();
         Cola();
         virtual ~Cola();

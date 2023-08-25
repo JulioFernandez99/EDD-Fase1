@@ -46,6 +46,7 @@ string getRuta();
 void menuPoryectos();
 void crearTareas();
 void asignar_Proyectos();
+void asignar_Tareas();
 
 
 void Login(){
@@ -79,10 +80,13 @@ void Admin(){
     cout<<"2.Crear proyecto"<<endl;
     cout<<"3.Crear tareas"<<endl;
     cout<<"4.Asignar proyectos"<<endl;
-    cout<<"5.Generar reportes"<<endl;
-    cout<<"6.Cerrar sesion"<<endl;
-    cout<<"7.Exit"<<endl;
-    cout<<"8.Trafica en consola"<<endl;
+    cout<<"5.Asignar tareas"<<endl;
+    cout<<"6.Generar reportes"<<endl;
+    cout<<"7.Cerrar sesion"<<endl;
+    cout<<"8.Exit"<<endl;
+    cout<<"9.Trafica en consola"<<endl;
+    cout<<"10.Trafica tareas"<<endl;
+
     cin>>opAdmin;
     switch (opAdmin) {
         case 1:
@@ -108,6 +112,19 @@ void Admin(){
             break;
 
         case 5:
+            if(colaTemp->primero!=NULL){
+                asignar_Tareas();
+                Admin();
+                return;
+            }
+            system("cls");
+            cout<<"Primero registre proyectos para poder asignar tareas"<<endl;
+            std::this_thread::sleep_for(std::chrono::seconds(2));
+            system("cls");
+            Admin();
+            break;
+
+        case 6:
             system("cls");
 
             cout<<"Generando reportes......."<<endl;
@@ -120,7 +137,7 @@ void Admin(){
 
             Admin();
             break;
-        case 6:
+        case 7:
             cin.ignore();
             system("cls");
             cout<<"Cerrando sesion......"<<endl;
@@ -128,13 +145,13 @@ void Admin(){
             system("cls");
             Login();
             break;
-        case 7:
+        case 8:
             system("cls");
             cout<<" --------------------------------"<<endl;
             cout<<"|Gracias por utilizar mi software|"<<endl;
             cout<<" --------------------------------"<<endl;
             exit(0);
-        case 8:
+        case 9:
             empleados->verLista();
             colaTemp->verCola();
             tareas->verListaDoble();
@@ -144,9 +161,40 @@ void Admin(){
             }*/
             Admin();
             break;
+        case 10:
+            colaTemp->verTareas();
+            Admin();
+            break;
 
     }
 
+}
+
+void asignar_Tareas(){
+    system("cls");
+    cout<<"-------Empleados existentes-------"<<endl;
+    empleadosTemp->verLista();
+    cout<<"-------Proyectos existentes-------"<<endl;
+    colaTemp->verCola();
+    string cod,encargado,tarea;
+    cout<<"\nCodigo de proyecto:";
+    cin.ignore();
+    getline(cin,cod);
+    if(colaTemp->buscar(cod)){
+        cout<<"Encargado:";
+        getline(cin,encargado);
+        cout<<"Tarea:";
+        getline(cin,tarea);
+        colaTemp->agregarTarea(cod,tarea,encargado);
+        cout<<"Proyecto agregado con exito"<<endl;
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        system("cls");
+        return;
+    }
+
+    cout<<"No existe un proyecto con este codigo"<<endl;
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    system("cls");
 }
 
 void asignar_Proyectos(){
@@ -218,11 +266,16 @@ void cargaEmpleados(){
             break;
         case 2:
             system("cls");
-            cout<<"Seleccionando archivos......."<<endl;
+            cout<<"Seleccione un archivo......"<<endl;
             rt=getRuta();
+            system("cls");
+            cout<<"Procesando archivo......"<<endl;
             empleados->cargaMasiva(rt);
             empleadosTemp->cargaMasiva(rt);
             std::this_thread::sleep_for(std::chrono::seconds(5));
+            system("cls");
+            cout<<"Carga masiva realizada con exito"<<endl;
+            std::this_thread::sleep_for(std::chrono::seconds(2));
             system("cls");
             break;
     }
@@ -279,7 +332,7 @@ void crearTareas(){
         cout<<"Nombre de la tarea:";
         cin.ignore(); //Limpiando buffer
         getline(cin, tarea_tarea);
-        tareas->push(tarea_tarea,tarea_py);
+        tareas->push(tarea_tarea,tarea_py,"");
         cout<<"Tarea agregada con exito...."<<endl;
         std::this_thread::sleep_for(std::chrono::seconds(1));
         system("cls");
@@ -294,6 +347,9 @@ void crearTareas(){
         cout<<"No existen proyectos existentes para asignar tareas....."<<endl;
         std::this_thread::sleep_for(std::chrono::seconds(2));
         system("cls");
+    }
+    if(colaPriori!=NULL){
+
     }
 
 };

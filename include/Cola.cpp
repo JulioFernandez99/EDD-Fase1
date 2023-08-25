@@ -131,7 +131,7 @@ void Cola::graficar() {
 
     try{
         system("dot -Tpng ColaDePrioridad.dot -o ColaDePrioridad.png");
-        cout<<"Reporte generado con exito.."<<endl;
+        //cout<<"Reporte generado con exito.."<<endl;
     }catch (exception  e){
         cout<<"Error al generar la grafica";
     }
@@ -152,6 +152,29 @@ string Cola::getNameProyecto(string numero_py){
     return "";
 }
 
+void Cola::agregarTarea(string numero_py,string tarea,string encargado) {
+    NodoCola *temp=primero;
+    while (temp!=NULL){
+        if (string(temp->Proyecto_C->numeroProyecto)==numero_py){
+            temp->Proyecto_C->tareas->push(tarea,numero_py,encargado);
+            return;
+        }
+        temp=temp->siguiente;
+    }
+}
+
+
+void Cola::verTareas(){
+    NodoCola *temp=primero;
+    while (temp!=NULL){
+        //cout<<"["<<temp->numeroProyecto<<","<<temp->prioridad<<"]"<<",";
+        cout<<temp->Proyecto_C->numeroProyecto<<endl;
+        temp->Proyecto_C->tareas->verListaDoble();
+        cout<<endl;
+        temp=temp->siguiente;
+    }
+
+}
 
 Cola::~Cola()
 {

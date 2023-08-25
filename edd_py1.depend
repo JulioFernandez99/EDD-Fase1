@@ -12,7 +12,7 @@
 	<string>
 	"Empleado.h"
 
-1692899028 source:c:\users\lenovo\desktop\edd_py1\main.cpp
+1693003253 source:c:\users\lenovo\desktop\edd_py1\main.cpp
 	<iostream>
 	<windows.h>
 	<commdlg.h>
@@ -32,7 +32,7 @@
 	<string>
 	"NodoLista.h"
 
-1692898955 source:c:\users\lenovo\desktop\edd_py1\include\lista.cpp
+1692899484 source:c:\users\lenovo\desktop\edd_py1\include\lista.cpp
 	<iostream>
 	<fstream>
 	<string>
@@ -40,24 +40,26 @@
 	<sstream>
 	"Lista.h"
 
-1692685027 source:c:\users\lenovo\desktop\edd_py1\include\nodocola.cpp
+1692987383 source:c:\users\lenovo\desktop\edd_py1\include\nodocola.cpp
 	"NodoCola.h"
 
-1692685051 c:\users\lenovo\desktop\edd_py1\include\nodocola.h
+1693002648 c:\users\lenovo\desktop\edd_py1\include\nodocola.h
 	"Proyecto.h"
+	"ListaD.h"
 	<string>
 
-1692732388 c:\users\lenovo\desktop\edd_py1\include\proyecto.h
+1693002648 c:\users\lenovo\desktop\edd_py1\include\proyecto.h
 	<iostream>
 	<string>
+	"ListaD.h"
 
-1692732419 source:c:\users\lenovo\desktop\edd_py1\include\proyecto.cpp
+1692994223 source:c:\users\lenovo\desktop\edd_py1\include\proyecto.cpp
 	"Proyecto.h"
 
-1692892086 c:\users\lenovo\desktop\edd_py1\include\cola.h
+1693002708 c:\users\lenovo\desktop\edd_py1\include\cola.h
 	"NodoCola.h"
 
-1692893916 source:c:\users\lenovo\desktop\edd_py1\include\cola.cpp
+1693003471 source:c:\users\lenovo\desktop\edd_py1\include\cola.cpp
 	<iostream>
 	<string>
 	<fstream>
@@ -93,18 +95,18 @@
 	"Empleado.h"
 	"Lista.h"
 
-1692728206 source:c:\users\lenovo\desktop\edd_py1\include\listad.cpp
+1693003311 source:c:\users\lenovo\desktop\edd_py1\include\listad.cpp
 	"ListaD.h"
 	<iostream>
 	<string>
 
-1692728189 c:\users\lenovo\desktop\edd_py1\include\listad.h
+1692994529 c:\users\lenovo\desktop\edd_py1\include\listad.h
 	"NodoD.h"
 	<string>
 
-1692728133 c:\users\lenovo\desktop\edd_py1\include\nodod.h
+1692994581 c:\users\lenovo\desktop\edd_py1\include\nodod.h
 	<string>
 
-1692728146 source:c:\users\lenovo\desktop\edd_py1\include\nodod.cpp
+1692994593 source:c:\users\lenovo\desktop\edd_py1\include\nodod.cpp
 	"NodoD.h"
 
