@@ -6,7 +6,7 @@
     - Carga masiva
     - Carga manual
 
-    [![N|Solid](ColaDePrioridad.png](https://nodesource.com/products/nsolid)
+(https://nodesource.com/products/nsolid)
       
 - **Proyectos**
     - Cola de prioridad
