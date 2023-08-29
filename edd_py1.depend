@@ -12,7 +12,7 @@
 	<string>
 	"Empleado.h"
 
-1693003253 source:c:\users\lenovo\desktop\edd_py1\main.cpp
+1693147623 source:c:\users\lenovo\desktop\edd_py1\main.cpp
 	<iostream>
 	<windows.h>
 	<commdlg.h>
@@ -56,10 +56,11 @@
 1692994223 source:c:\users\lenovo\desktop\edd_py1\include\proyecto.cpp
 	"Proyecto.h"
 
-1693002708 c:\users\lenovo\desktop\edd_py1\include\cola.h
+1693157368 c:\users\lenovo\desktop\edd_py1\include\cola.h
 	"NodoCola.h"
+	<sstream>
 
-1693003471 source:c:\users\lenovo\desktop\edd_py1\include\cola.cpp
+1693158494 source:c:\users\lenovo\desktop\edd_py1\include\cola.cpp
 	<iostream>
 	<string>
 	<fstream>
@@ -74,7 +75,7 @@
 	"Proyecto.h"
 	"Empleado.h"
 
-1692894905 source:c:\users\lenovo\desktop\edd_py1\include\matriz.cpp
+1693003783 source:c:\users\lenovo\desktop\edd_py1\include\matriz.cpp
 	"Matriz.h"
 	<cctype>
 	<string>
@@ -95,12 +96,12 @@
 	"Empleado.h"
 	"Lista.h"
 
-1693003311 source:c:\users\lenovo\desktop\edd_py1\include\listad.cpp
+1693158621 source:c:\users\lenovo\desktop\edd_py1\include\listad.cpp
 	"ListaD.h"
 	<iostream>
 	<string>
 
-1692994529 c:\users\lenovo\desktop\edd_py1\include\listad.h
+1693077631 c:\users\lenovo\desktop\edd_py1\include\listad.h
 	"NodoD.h"
 	<string>
 

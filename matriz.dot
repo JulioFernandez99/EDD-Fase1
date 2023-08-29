@@ -1,0 +1,7 @@
+digraph MatrizCapa{ 
+ node[shape=box] 
+ rankdir=UD;
+{rank=same; 
+nodo0x756040[label="RAIZ\n\n" ,group=0]; 
+} 
+} 

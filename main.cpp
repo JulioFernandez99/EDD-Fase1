@@ -84,8 +84,8 @@ void Admin(){
     cout<<"6.Generar reportes"<<endl;
     cout<<"7.Cerrar sesion"<<endl;
     cout<<"8.Exit"<<endl;
-    cout<<"9.Trafica en consola"<<endl;
-    cout<<"10.Trafica tareas"<<endl;
+    //cout<<"9.Grafica en consola"<<endl;
+    //cout<<"10.Grafica tareas"<<endl;
 
     cin>>opAdmin;
     switch (opAdmin) {
@@ -130,6 +130,7 @@ void Admin(){
             cout<<"Generando reportes......."<<endl;
             matrizN->Graficar();
             colaTemp->graficar();
+            colaTemp->jsonTareas();
             std::this_thread::sleep_for(std::chrono::seconds(5));
             system("cls");
             cout<<"Reportes  generados con exito!"<<endl;
@@ -360,12 +361,9 @@ int main() {
     empleadosTemp=new Lista();
     colaPriori=new Cola();
     tareas=new ListaD();
-    empleados->push("jf","123");
-    empleadosTemp->push("jf","123");
+    empleados->push("PM-201902416","35122");
+    empleadosTemp->push("PM-201902416","35122");
     Login();
-
-
-
     return 0;
 }
 

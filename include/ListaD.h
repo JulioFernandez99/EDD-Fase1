@@ -13,6 +13,7 @@ class ListaD
         NodoD *primero;
         NodoD *ultimo;
         void push(string tarea_,string numero_,string encargado);
+        string tareasFormatoJson();
         void verListaDoble();
         ListaD();
         virtual ~ListaD();

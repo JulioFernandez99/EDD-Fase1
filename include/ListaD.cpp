@@ -25,8 +25,44 @@ void ListaD::verListaDoble() {
     NodoD *temp=this->primero;
     while (temp!=NULL){
         cout<<"["<<temp->numero_py<<". "<<temp->tarea<<". "<<temp->encargado<<"]->";
+
         temp=temp->siguiente;
     }
+
+}
+
+string ListaD::tareasFormatoJson(){
+    string cadena="";
+    NodoD *temp=this->primero;
+
+    if(temp!=NULL){
+        while (temp->siguiente!=NULL){
+        cadena+="\n\t\t\t{";
+        cadena+="\n\t\t\t\tnombre: ";
+        cadena+=temp->tarea;
+        cadena+=",";
+        cadena+="\n\t\t\t\templeado:";
+        cadena+=temp->encargado;
+        cadena+="\n\t\t\t},";
+        temp=temp->siguiente;
+    }
+
+    try{
+        cadena+="\n\t\t\t{";
+        cadena+="\n\t\t\t\tnombre: ";
+        cadena+=temp->tarea;
+        cadena+=",";
+        cadena+="\n\t\t\t\templeado:";
+        cadena+=temp->encargado;
+        cadena+="\n\t\t\t}";
+    }catch (exception e){
+
+    }
+
+    }
+
+    return cadena;
+
 
 }
 

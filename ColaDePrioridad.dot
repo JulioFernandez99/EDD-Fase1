@@ -1,0 +1,10 @@
+digraph graficaLista {
+rankdir=LR;
+node[shape="record"]; 
+nodo0[label="PY-001\n Prioridad:A"]; 
+nodo1[label="PY-002\n Prioridad:C"]; 
+nodo2[label="NULL"]; 
+nodo0->nodo1; 
+nodo1->nodo2; 
+
+}

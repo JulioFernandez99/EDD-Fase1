@@ -1,6 +1,7 @@
 #ifndef COLA_H
 #define COLA_H
 #include "NodoCola.h"
+#include <sstream>
 
 
 class Cola
@@ -17,6 +18,8 @@ class Cola
         string getNameProyecto(string numero_py);
         void graficar();
         void pop();
+        string textoJSON();
+        void jsonTareas();
         void verTareas();
         string textoGrafo();
         Cola();
