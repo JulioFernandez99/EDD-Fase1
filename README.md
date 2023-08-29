@@ -1,9 +1,9 @@
 
-# # <center>Pro</center>
+# <center>ProjectUp</center>
 
 
 <details>
-<summary>Texto del encabezado retráctil</summary>
+<summary>Descripcion</summary>
 
 Contenido oculto que se mostrará cuando se haga clic en el encabezado retráctil.
 
