@@ -1,17 +1,11 @@
-# Estructura de Datos
 
-## Partes terminadas:
+# # <center>Pro</center>
 
-- **Empleados**
-    - Carga masiva
-    - Carga manual
 
-(https://nodesource.com/products/nsolid)
-      
-- **Proyectos**
-    - Cola de prioridad
-    - Asignar proyectos
-      
-- **Tareas**
-    - Crear tareas
-    - Asignar tareas
+# Hola
+hola mundo es bonito
+
+## hola 2
+
+
+
