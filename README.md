@@ -41,6 +41,7 @@ En este apartado se trabajo con una lista circular doblemente enlazada.Para que 
 <details>
 <summary>Carga manual</summary>
 En esta parte se solicitara el nombre y password del empleado y se prodecera a hacer una operacion push a la lista circular.
+
 <details>
 <summary>Codigo</summary>
     
