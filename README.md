@@ -3,7 +3,33 @@
 
 ## Login
 Esta parte es la encargada de dar acceso a los empleados existentes dentro del sistema,inicialmente solo se encuentra registrado el Projec Manager con nombre de usuario "PM-201902416" y password "35122".Seguidamente se desplazara un menu donde se encuentran las siguientes opciones.Para que esta parte funcione se realiza un busqueda en la lista circular de empleados hasta coincidir con los datos de algun nodo y se retorna un valor booleano.
-![Codigo](https://github.com/JulioFernandez99/EDD-Fase1/blob/main/Imagenes%20reporte/Login.png)
+<details>
+<summary>Codigo</summary>
+void Login(){
+    system("cls");
+    cout<<"--------Login--------"<<endl;
+    cout<<"User:";
+    getline(cin,name_user);
+    cout<<"Password:"; cin>>password_user;
+    if(empleadosTemp->buscar(name_user,password_user)){
+        cin.ignore();
+        system("cls");
+        cout<<"Bienvenido "<<name_user<<endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        system("cls");
+        Admin();
+
+    } else{
+        cout<<"Usuario o contrasena invalidos....."<<endl;
+        cin.ignore();
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        Login();
+
+    }
+
+}
+
+</details>
 
 
 ## Carga de empleados
@@ -14,14 +40,80 @@ En este apartado se trabajo con una lista circular doblemente enlazada.Para que 
 <details>
 <summary>Carga manual</summary>
 En esta parte se solicitara el nombre y password del empleado y se prodecera a hacer una operacion push a la lista circular.
-![Codigo](https://github.com/JulioFernandez99/EDD-Fase1/blob/main/Imagenes%20reporte/push%20lista.png)
+<details>
+<summary>Codigo</summary>
+void Lista::push(string user_name,string user_pass) {
+    NodoLista *nuevo=new NodoLista(user_name, user_pass);
+    if(this->primero==NULL){
+        this->primero=nuevo;
+        this->ultimo=nuevo;
+        this->primero->siguiente=this->ultimo;
+        this->primero->anterior=this->ultimo;
+        this->ultimo->siguiente=this->primero;
+        this->ultimo->anterior=this->primero;
+        return;
+    }
+
+    nuevo->siguiente=ultimo->siguiente;
+    nuevo->anterior=ultimo;
+    ultimo->siguiente=nuevo;
+    ultimo=nuevo;
+
+    this->size++;
+
+}
 </details>
 
 
 <details>
 <summary>Carga masiva</summary>
 Para esta parte inicialemnte se desplegara un filechooser que se encargara de devolver la ruta del archivo que se desea analizar,teniendo la ruta del archivo que se desea analizar se procede a leerlo linea por linea.Al leer cada linea se hace un split con la coma que separa los datos,y se almacena en un vector,seguido a ello se realiza un push de la primera y segunda posicion del vector que corresponden al nombre y password del usuario.
-![Codigo](https://github.com/JulioFernandez99/EDD-Fase1/blob/main/Imagenes%20reporte/push%20lista%20masiva.png)
+<details>
+<summary>Codigo</summary>
+void  Lista::cargaMasiva(string ruta) {
+
+   ifstream inputFile(ruta); // Abre el archivo para lectura
+
+    if (inputFile.is_open()) {
+        string line;
+        while (getline(inputFile, line)) {
+
+            istringstream ss(line);
+            string token;
+            vector<std::string> tokens;
+
+            while (getline(ss, token, ',')) {
+                if (token != "user") {
+                    tokens.push_back(token);
+                }
+            }
+
+            if (tokens.size() >= 2) {
+                this->push(tokens[0], tokens[1]);
+            }
+        }
+        inputFile.close();
+    } else {
+        cerr << "Could not open the file." <<ruta<< std::endl;
+    }
+}
+
+void Lista::pop(){
+    if (primero!=NULL) {
+            return;
+        }
+
+        NodoLista* actual = this->primero;
+        while (actual->siguiente != this->primero) {
+            NodoLista* siguiente = this->primero->siguiente;
+            delete actual;
+            actual = siguiente;
+        }
+        delete actual;
+        this->primero=NULL;
+}
+
+</details>
 </details>
 
 ## Crear proyectos
@@ -29,7 +121,69 @@ Para esta parte inicialemnte se desplegara un filechooser que se encargara de de
 <details>
 <summary>Descripcion</summary>
 En este apartado se solicitara el nombre del proyecto y la prioridad.Para que esta parte fuera funcional se trabajo con una cola de prioridad,donde "A" es la prioridad mas alta y "C" la mas baja,para ello se definio un una clase empleado que se encarga de almacenar los datos del proyecto y generar un proyecto para cada uno,luego se definio una clase Cola con la funcion push que se encarga de recibir la prioridad y nombre del proyecto,antes de agregar el nuevo nodo se realiza una verificacion para insertar el nodo en la posicion correcta.
-![Codigo](https://github.com/JulioFernandez99/EDD-Fase1/blob/main/Imagenes%20reporte/ordenamiento%20cola.png)
+<details>
+<summary>Codigo</summary>
+void Cola::push(string nombre_, char priori_) {
+    string cadenaCont="PY-";
+
+    if(contadorProyectos<10){
+        cadenaCont+= "00"+to_string(contadorProyectos);
+    }
+    else if(contadorProyectos>9 && contadorProyectos<100){
+        cadenaCont+= "0"+to_string(contadorProyectos);
+    } else{
+        cadenaCont+=to_string(contadorProyectos);
+    }
+
+
+    NodoCola *nuevoNodo=new NodoCola(priori_,new Proyecto(nombre_,cadenaCont,priori_));
+    if(primero==NULL){
+
+        primero=nuevoNodo;
+        ultimo=nuevoNodo;
+        contadorProyectos++;
+        return;
+    }
+
+    NodoCola *temp=primero;
+    NodoCola *anterior=NULL;
+
+    while (temp!=NULL){
+        if ( (nuevoNodo->prioridad > temp->prioridad || nuevoNodo->prioridad == temp->prioridad) && (temp->siguiente==NULL ) ) {
+            //Si el que viene es mayor
+            temp->siguiente = nuevoNodo;
+            ultimo = nuevoNodo;
+            contadorProyectos++;
+            return;
+        }
+        else if ((nuevoNodo->prioridad < temp->prioridad || nuevoNodo->prioridad == temp->prioridad) && anterior==NULL){
+            //Si el que viene es menor
+
+            nuevoNodo->siguiente=temp;
+            primero=nuevoNodo;
+            contadorProyectos++;
+            return;
+        }
+        else if ((temp->prioridad  > nuevoNodo->prioridad) && anterior!=NULL ){
+            //cout<<"Entro"<<nuevoNodo->prioridad<<endl;
+            //Inserta entre nodos
+            anterior->siguiente=nuevoNodo;
+            nuevoNodo->siguiente=temp;
+            contadorProyectos++;
+            return;
+        }
+        anterior=temp;
+        temp=temp->siguiente;
+    }
+
+}
+
+void Cola::pop() {
+    if(primero!=NULL){
+        primero=primero->siguiente;
+    }
+
+}
 </details>
 
 ## Crear tareas
@@ -152,29 +306,58 @@ NodoMatriz* Matriz::buscarC_1(std::string codigo)
 Aca se utilizo la cola de prioridad ya antes mencionada,a cada clase proyecto inicialmente se le definio una lista doblemnte enlazada vacia a la cual se le podra ir agregando proyectos con su funcion push.Para poder asignar una tarea se solicita inicialmente el proyecto para poder buscarlo en la cola de prioridad nodo por nodo y si coincide con alguno se accede al objeto proyecto y sus tareas y se procede a hacerke push a la lista doblemente enlazada.
 <details>
 <summary>Codigo</summary>
-![Codigo](https://github.com/JulioFernandez99/EDD-Fase1/blob/main/Imagenes%20reporte/asignar%20tareas.png)
-</details>details>
+void Cola::agregarTarea(string numero_py,string tarea,string encargado) {
+    NodoCola *temp=primero;
+    while (temp!=NULL){
+        if (string(temp->Proyecto_C->numeroProyecto)==numero_py){
+            temp->Proyecto_C->tareas->push(tarea,numero_py,encargado);
+            return;
+        }
+        temp=temp->siguiente;
+    }
+}
+</details>
 
 ## Generar reportes
 Aca se invoca la funcion graficar de los objetos cola de prioridad y matriz.
 <details>
 <summary>Codigo</summary>
-![Codigo](https://github.com/JulioFernandez99/EDD-Fase1/blob/main/Imagenes%20reporte/generar%20reportes.png)
-</details>details>
+system("cls");
+            cout<<"Generando reportes......."<<endl;
+            matrizN->Graficar();
+            colaTemp->graficar();
+            colaTemp->jsonTareas();
+            std::this_thread::sleep_for(std::chrono::seconds(5));
+            system("cls");
+            cout<<"Reportes  generados con exito!"<<endl;
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+
+            Admin();
+</details>
 
 ## Cerrar sesion
 Se realiza un clear screen a la consola y se muestra el login nuevamente.
 <details>
 <summary>Codigo</summary>
-![Codigo](https://github.com/JulioFernandez99/EDD-Fase1/blob/main/Imagenes%20reporte/cerrar%20sesion.png)
-</details>details>
+  cin.ignore();
+            system("cls");
+            cout<<"Cerrando sesion......"<<endl;
+            std::this_thread::sleep_for(std::chrono::seconds(2));
+            system("cls");
+            Login();
+</details>
 
 ## Exit
 Se detiene el flujo del programa con un exit(0)
 <details>
 <summary>Codigo</summary>
-![Codigo](https://github.com/JulioFernandez99/EDD-Fase1/blob/main/Imagenes%20reporte/exit.png)
-</details>details>
+  cin.ignore();
+            system("cls");
+            cout<<"Cerrando sesion......"<<endl;
+            std::this_thread::sleep_for(std::chrono::seconds(2));
+            system("cls");
+            Login();
+</details>
 
 
 
