@@ -63,7 +63,7 @@ En esta parte se solicitara el nombre y password del empleado y se prodecera a h
 
     this->size++;
 
-}
+    }
 </details>
 </details>
 
@@ -98,7 +98,7 @@ Para esta parte inicialemnte se desplegara un filechooser que se encargara de de
         } else {
             cerr << "Could not open the file." <<ruta<< std::endl;
         }
-}
+    }
 
 </details>
 </details>
