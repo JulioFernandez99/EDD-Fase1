@@ -69,6 +69,7 @@ En esta parte se solicitara el nombre y password del empleado y se prodecera a h
 
 <details>
 <summary>Carga masiva</summary>
+    
 Para esta parte inicialemnte se desplegara un filechooser que se encargara de devolver la ruta del archivo que se desea analizar,teniendo la ruta del archivo que se desea analizar se procede a leerlo linea por linea.Al leer cada linea se hace un split con la coma que separa los datos,y se almacena en un vector,seguido a ello se realiza un push de la primera y segunda posicion del vector que corresponden al nombre y password del usuario.
 <details>
 <summary>Codigo</summary>
