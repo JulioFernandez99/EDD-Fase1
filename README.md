@@ -5,6 +5,7 @@
 Esta parte es la encargada de dar acceso a los empleados existentes dentro del sistema,inicialmente solo se encuentra registrado el Projec Manager con nombre de usuario "PM-201902416" y password "35122".Seguidamente se desplazara un menu donde se encuentran las siguientes opciones.Para que esta parte funcione se realiza un busqueda en la lista circular de empleados hasta coincidir con los datos de algun nodo y se retorna un valor booleano.
 <details>
 <summary>Codigo</summary>
+    
 void Login(){
     system("cls");
     cout<<"--------Login--------"<<endl;
