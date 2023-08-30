@@ -3,6 +3,7 @@
 
 ## Login
 Esta parte es la encargada de dar acceso a los empleados existentes dentro del sistema,inicialmente solo se encuentra registrado el Projec Manager con nombre de usuario "PM-201902416" y password "35122".Seguidamente se desplazara un menu donde se encuentran las siguientes opciones.Para que esta parte funcione se realiza un busqueda en la lista circular de empleados hasta coincidir con los datos de algun nodo y se retorna un valor booleano;
+![Texto alternativo]([URL de la imagen](https://drive.google.com/file/d/1I_LXxKm0C2jV5qvjNr7VmciCNNqiN9Mi/view?usp=drive_link))
 
 ## Carga de empleados
 En este apartado se podran registrar empleados al sistema donde se le podran asignar desde proyectos hasta tareas.
