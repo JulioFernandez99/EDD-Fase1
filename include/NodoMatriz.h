@@ -1,8 +1,9 @@
 #ifndef NODOMATRIZ_H
 #define NODOMATRIZ_H
+
 #include <string>
-#include "Proyecto.h"
-#include "Empleado.h"
+#include "NodoCola.h"
+#include "Lista.h"
 
 using namespace std;
 
@@ -15,10 +16,9 @@ class NodoMatriz
         NodoMatriz *Arriba;
         int PosY;
         int PosX;
-        string puesto;
-        Proyecto *Proyecto_c;
-        Empleado *Encargado_c;
-        NodoMatriz(Proyecto *proyecto, Empleado *encargado, int posy, int posx,string codigo);
+        NodoCola *Proyecto_c;
+        NodoLista *Encargado_c;
+        NodoMatriz(NodoCola *proyecto, NodoLista *encargado, int posy, int posx);
         virtual ~NodoMatriz();
 
     protected:

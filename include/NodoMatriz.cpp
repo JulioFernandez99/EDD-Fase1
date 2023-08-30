@@ -1,6 +1,7 @@
 #include "NodoMatriz.h"
 
-NodoMatriz::NodoMatriz(Proyecto *proyecto, Empleado *encargado, int posx, int posy,string codigo)
+
+NodoMatriz::NodoMatriz(NodoCola *proyecto, NodoLista *encargado, int posx, int posy)
 {
     //ctor
     this->Abajo = 0;
@@ -11,9 +12,7 @@ NodoMatriz::NodoMatriz(Proyecto *proyecto, Empleado *encargado, int posx, int po
     this->PosX = posx;
     this->Encargado_c = encargado;
     this->Proyecto_c = proyecto;
-    this->puesto=codigo;
 }
-
 
 NodoMatriz::~NodoMatriz()
 {

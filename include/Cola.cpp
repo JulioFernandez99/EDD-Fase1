@@ -2,7 +2,6 @@
 #include <string>
 #include <fstream>
 #include "Cola.h"
-#include "Proyecto.h"
 
 using namespace std;
 
@@ -25,8 +24,7 @@ void Cola::push(string nombre_, char priori_) {
         cadenaCont+=to_string(contadorProyectos);
     }
 
-
-    NodoCola *nuevoNodo=new NodoCola(priori_,new Proyecto(nombre_,cadenaCont,priori_));
+    NodoCola *nuevoNodo=new NodoCola(nombre_, priori_,cadenaCont);
     if(primero==NULL){
 
         primero=nuevoNodo;
@@ -72,14 +70,13 @@ void Cola::pop() {
     if(primero!=NULL){
         primero=primero->siguiente;
     }
-
 }
 
 
 bool Cola::buscar(string numero_py) {
     NodoCola *temp=primero;
     while (temp!=NULL){
-        if (string(temp->Proyecto_C->numeroProyecto)==numero_py){
+        if (string(temp->numeroProyecto)==numero_py){
             return true;
         }
         temp=temp->siguiente;
@@ -92,7 +89,7 @@ void Cola::verCola() {
     NodoCola *temp=primero;
     while (temp!=NULL){
         //cout<<"["<<temp->numeroProyecto<<","<<temp->prioridad<<"]"<<",";
-        cout<<temp->Proyecto_C->numeroProyecto<<". "<<temp->Proyecto_C->nombre_proyecto<<","<<temp->prioridad<<endl;
+        cout<<temp->numeroProyecto<<". "<<temp->nombre_proyecto<<","<<temp->prioridad<<endl;
         temp=temp->siguiente;
     }
 }
@@ -103,7 +100,7 @@ string Cola::textoGrafo() {
     int cont=0;
     NodoCola *aux=this->primero;
     while (aux!=NULL){
-        cadena+="nodo"+ to_string(cont)+"[label=\""+aux->Proyecto_C->numeroProyecto+"\\n"+" Prioridad:"+aux->prioridad+"\"]; \n";
+        cadena+="nodo"+ to_string(cont)+"[label=\""+aux->numeroProyecto+"\\n"+" Prioridad:"+aux->prioridad+"\"]; \n";
         aux=aux->siguiente;
         cont++;
     }
@@ -121,118 +118,19 @@ void Cola::graficar() {
     archivo.open("ColaDePrioridad.dot",ios::out);
     if (archivo.fail()){
         cout<<"Se produjo un error al abrir el archivo";
+
+
     } else{
         archivo<<"digraph graficaLista {\nrankdir=LR;\nnode[shape=\"record\"]; \n"<<textoGrafo();
         archivo.close();
+
     }
+
     try{
         system("dot -Tpng ColaDePrioridad.dot -o ColaDePrioridad.png");
-        //cout<<"Reporte generado con exito.."<<endl;
+        cout<<"Reporte generado con exito.."<<endl;
     }catch (exception  e){
         cout<<"Error al generar la grafica";
-    }
-}
-
-
-string Cola::textoJSON(){
-    string texto="";
-    NodoCola *temp=this->primero;
-    string tareasForm;
-    while (temp->siguiente!=NULL){
-
-
-        //cout<<temp->Proyecto_C->numeroProyecto<<". "<<temp->Proyecto_C->nombre_proyecto<<","<<temp->prioridad<<endl;
-        texto+="\n\t{";
-        texto+="\n\t\tid:"+temp->Proyecto_C->numeroProyecto+",";
-        texto+="\n\t\tnombre:"+temp->Proyecto_C->nombre_proyecto+",";
-        texto+="\n\t\tprioridad:";
-        texto+=temp->prioridad;
-        texto+=",";
-        texto+="\n\t\ttareas:[";
-        if(temp->Proyecto_C->tareas->primero!=NULL){
-            tareasForm=temp->Proyecto_C->tareas->tareasFormatoJson();
-            texto+=tareasForm;
-        }
-        texto+="\n\t\t]";
-        texto+="\n\t},";
-        temp=temp->siguiente;
-    }
-
-    //cout<<temp->Proyecto_C->numeroProyecto<<". "<<temp->Proyecto_C->nombre_proyecto<<","<<temp->prioridad<<endl;
-        try{
-
-            texto+="\n\t{";
-            texto+="\n\t\tid:"+temp->Proyecto_C->numeroProyecto+",";
-            texto+="\n\t\tnombre:"+temp->Proyecto_C->nombre_proyecto+",";
-            texto+="\n\t\tprioridad:";
-            texto+=temp->prioridad;
-            texto+=",";
-            texto+="\n\t\ttareas:[";
-            if(temp->Proyecto_C->tareas->primero!=NULL){
-                tareasForm=temp->Proyecto_C->tareas->tareasFormatoJson();
-                texto+=tareasForm;
-            }
-            texto+="\n\t\t]";
-            texto+="\n\t}";
-        }catch (exception e){
-
-        }
-    return texto;
-
-}
-
-void Cola::jsonTareas(){
-    string cod="{\n";
-    cod+="\nProyectos:[";
-    cod+=textoJSON();
-    cod+="\n\t]";
-    cod+="\n}";
-
-    ofstream archivo2;
-    archivo2.open("Tareas.json",ios::out);
-    if (archivo2.fail()){
-        //cout<<"Se produjo un error al abrir el archivo";
-        archivo2<<cod;
-        archivo2.close();
-    } else{
-        archivo2<<cod;
-        archivo2.close();
-    }
-
-
-}
-
-string Cola::getNameProyecto(string numero_py){
-    NodoCola *temp=primero;
-    while (temp!=NULL){
-        if (string(temp->Proyecto_C->numeroProyecto)==numero_py){
-            return temp->Proyecto_C->nombre_proyecto;
-        }
-        temp=temp->siguiente;
-    }
-    return "";
-}
-
-void Cola::agregarTarea(string numero_py,string tarea,string encargado) {
-    NodoCola *temp=primero;
-    while (temp!=NULL){
-        if (string(temp->Proyecto_C->numeroProyecto)==numero_py){
-            temp->Proyecto_C->tareas->push(tarea,numero_py,encargado);
-            return;
-        }
-        temp=temp->siguiente;
-    }
-}
-
-
-void Cola::verTareas(){
-    NodoCola *temp=primero;
-    while (temp!=NULL){
-        //cout<<"["<<temp->numeroProyecto<<","<<temp->prioridad<<"]"<<",";
-        cout<<temp->Proyecto_C->numeroProyecto<<endl;
-        temp->Proyecto_C->tareas->verListaDoble();
-        cout<<endl;
-        temp=temp->siguiente;
     }
 
 }

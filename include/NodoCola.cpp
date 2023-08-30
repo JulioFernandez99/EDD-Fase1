@@ -1,11 +1,13 @@
 #include "NodoCola.h"
+#include <string>
 
 using namespace std;
 
-NodoCola::NodoCola(char priori_,Proyecto *nuevoProyecto)
+NodoCola::NodoCola(string nombre_py,char priori_,string contadorProyecto)
 {
-    this->Proyecto_C=nuevoProyecto;
+    this->nombre_proyecto=nombre_py;
     this->prioridad=priori_;
+    this->numeroProyecto=contadorProyecto;
     this->siguiente=NULL;
 }
 

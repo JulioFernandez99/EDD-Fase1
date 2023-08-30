@@ -1,0 +1,82 @@
+# depslib dependency file v1.0
+1692680102 source:c:\users\lenovo\desktop\p1_edd_oficial\main.cpp
+	<iostream>
+	<windows.h>
+	<commdlg.h>
+	<string>
+	<cstdlib>
+	"Cola.h"
+	"Lista.h"
+	"ListaD.h"
+
+1692640102 source:c:\users\lenovo\desktop\p1_edd_oficial\include\nodocola.cpp
+	"NodoCola.h"
+	<string>
+
+1692645043 c:\users\lenovo\desktop\p1_edd_oficial\include\nodocola.h
+	<string>
+
+1692640166 source:c:\users\lenovo\desktop\p1_edd_oficial\src\listacircular.cpp
+	"ListaCircular.h"
+
+1692640125 c:\users\lenovo\desktop\p1_edd_oficial\include\listacircular.h
+
+1692640179 source:c:\users\lenovo\desktop\p1_edd_oficial\src\cola.cpp
+	"Cola.h"
+
+1692640518 c:\users\lenovo\desktop\p1_edd_oficial\include\cola.h
+	"NodoCola.h"
+
+1692641112 source:c:\users\lenovo\desktop\p1_edd_oficial\include\cola.cpp
+	<iostream>
+	<string>
+	<fstream>
+	"Cola.h"
+
+1692644574 source:c:\users\lenovo\desktop\p1_edd_oficial\include\lista.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<sstream>
+	"Lista.h"
+
+1692644976 c:\users\lenovo\desktop\p1_edd_oficial\include\lista.h
+	"NodoLista.h"
+	<string>
+
+1692642154 c:\users\lenovo\desktop\p1_edd_oficial\include\nodolista.h
+	<string>
+
+1692642100 source:c:\users\lenovo\desktop\p1_edd_oficial\include\nodolista.cpp
+	"NodoLista.h"
+
+1692645484 source:c:\users\lenovo\desktop\p1_edd_oficial\include\nodod.cpp
+	"NodoD.h"
+
+1692645306 c:\users\lenovo\desktop\p1_edd_oficial\include\nodod.h
+	<string>
+
+1692645494 source:c:\users\lenovo\desktop\p1_edd_oficial\include\listad.cpp
+	"ListaD.h"
+	<iostream>
+	<string>
+
+1692645156 c:\users\lenovo\desktop\p1_edd_oficial\include\listad.h
+	"NodoD.h"
+	<string>
+
+1692681236 source:c:\users\lenovo\desktop\p1_edd_oficial\include\nodomatriz.cpp
+	"NodoMatriz.h"
+
+1692681557 c:\users\lenovo\desktop\p1_edd_oficial\include\nodomatriz.h
+	<string>
+	"NodoCola.h"
+	"Lista.h"
+
+1692652346 source:c:\users\lenovo\desktop\p1_edd_oficial\include\proyecto.cpp
+	"Proyecto.h"
+
+1692652330 c:\users\lenovo\desktop\p1_edd_oficial\include\proyecto.h
+	<string>
+

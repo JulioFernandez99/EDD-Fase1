@@ -1,17 +1,17 @@
 #ifndef NODOCOLA_H
 #define NODOCOLA_H
-#include "Proyecto.h"
-#include "ListaD.h"
+
 #include <string>
 
 using namespace std;
 class NodoCola
 {
     public:
-        Proyecto *Proyecto_C;
+        string nombre_proyecto;
         char prioridad;
+        string numeroProyecto;
         NodoCola *siguiente;
-        NodoCola(char priori_,Proyecto *nuevoProyecto);
+        NodoCola(string nombre_py,char priori_,string contadorProyecto);
         virtual ~NodoCola();
 
     protected:

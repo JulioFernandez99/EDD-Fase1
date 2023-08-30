@@ -6,11 +6,11 @@ using namespace std;
 class Empleado
 {
     public:
-        string user_name;
-        string user_pass;
-        string user_cod;
-        string user_puesto;
-        Empleado(string nombre, string password);
+        std::string Nombre;
+        std::string Password;
+        std::string Codigo;
+        std::string Puesto;
+        Empleado(std::string nombre, std::string password);
         virtual ~Empleado();
 
     protected:

@@ -1,14 +1,11 @@
 #include "Proyecto.h"
 
-Proyecto::Proyecto(std::string nombre, std::string codigo,char prioridad)
+Proyecto::Proyecto(std::string codigo, std::string nombre)
 {
     //ctor
-    this->nombre_proyecto=nombre;
-    this->numeroProyecto=codigo;
-    this->prioridad=prioridad;
-
+    this->Nombre = nombre;
+    this->Codigo = codigo;
 }
-
 Proyecto::~Proyecto()
 {
     //dtor

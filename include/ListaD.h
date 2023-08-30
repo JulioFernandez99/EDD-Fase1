@@ -1,8 +1,6 @@
 #ifndef LISTAD_H
 #define LISTAD_H
 #include "NodoD.h"
-
-
 #include <string>
 
 using namespace std;
@@ -12,8 +10,7 @@ class ListaD
     public:
         NodoD *primero;
         NodoD *ultimo;
-        void push(string tarea_,string numero_,string encargado);
-        string tareasFormatoJson();
+        void push(string tarea_,string numero_);
         void verListaDoble();
         ListaD();
         virtual ~ListaD();
@@ -22,4 +19,5 @@ class ListaD
 
     private:
 };
+
 #endif // LISTAD_H

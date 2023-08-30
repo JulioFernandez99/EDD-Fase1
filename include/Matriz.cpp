@@ -1,11 +1,10 @@
 #include "Matriz.h"
-#include <cctype>
-#include <string>
+
 
 Matriz::Matriz()
 {
     //ctor
-    this->Raiz = new NodoMatriz(new Proyecto("RAIZ","RAIZ",NULL),new Empleado("",""),-1,-1,"");
+    this->Raiz = new NodoMatriz(new Cola("RAIZ",""),new Lista("",""),-1,-1);
     this->CoordenadaX = 0;
     this->CoordenadaY = 0;
 }
@@ -26,7 +25,6 @@ NodoMatriz* Matriz::buscarF(int y)
         }
         aux = aux->Abajo;
     }
-    cout<<"No se encontro fila"<<endl;
     return 0;
 }
 
@@ -41,7 +39,6 @@ NodoMatriz* Matriz::buscarC(int x)
         }
         aux = aux->Siguiente;
     }
-    cout<<"No se encontro columna"<<endl;
     return 0;
 }
 
@@ -120,97 +117,46 @@ NodoMatriz* Matriz::insertar_fila(NodoMatriz *nuevo, NodoMatriz *cabeza_fila)
 /** NUEVAS FUNCIONES */
 NodoMatriz* Matriz::nueva_columna_1(int x, Proyecto *proyecto)
 {
-    NodoMatriz *columna = this->insertar_columna(new NodoMatriz(proyecto, 0, x, -1,""), this->Raiz);
+    NodoMatriz *columna = this->insertar_columna(new NodoMatriz(proyecto, 0, x, -1), this->Raiz);
     return columna;
 }
 
-void Matriz::insertar_proyecto(Cola *cola)
+void Matriz::insertar_proyecto(ColaPrioridad *cola)
 {
-    NodoMatriz *nodo_Columna = this->nueva_columna_1(this->CoordenadaX, cola->primero->Proyecto_C);
+    NodoMatriz *nodo_Columna = this->nueva_columna_1(this->CoordenadaX, cola->Primero->Proyecto_C);
     this->CoordenadaX++;
 }
 
-NodoMatriz* Matriz::nueva_fila_1(int y, Empleado *encargado)
+NodoMatriz* Matriz::nueva_fila_1(int y, NodoLista *encargado)
 {
-    NodoMatriz *fila = this->insertar_fila(new NodoMatriz(0, encargado, -1, y,""), this->Raiz);
+    NodoMatriz *fila = this->insertar_fila(new NodoMatriz(0, encargado, -1, y), this->Raiz);
     return fila;
 }
 
 void Matriz::insertar_empleado(Lista *lista)
 {
     //
-    NodoLista *aux = lista->primero;
+    NodoLista *aux = lista->Primero;
     int contador = 0;
     while(lista->size > contador)
     {
         this->nueva_fila_1(this->CoordenadaY, aux->EmpleadoSistema);
-        aux = aux->siguiente;
-
+        aux = aux->Siguiente;
         contador++;
         this->CoordenadaY++;
     }
 }
 
-void Matriz::asignarProyecto(std::string nombre_empleado, std::string codigo_proyecto,std::string puesto)
+void Matriz::asignarProyecto(std::string nombre_empleado, std::string codigo_proyecto)
 {
-    //cout << "Error" << endl;
     NodoMatriz *nodo_Columna =  this->buscarC_1(codigo_proyecto);
     NodoMatriz *nodo_Fila = this->buscarF_1(nombre_empleado);
 
-    std::transform(puesto.begin(), puesto.end(), puesto.begin(), ::toupper);
+    NodoMatriz *nuevo = new NodoMatriz(nodo_Columna->Proyecto_c, nodo_Fila->Encargado_c, nodo_Columna->PosX, nodo_Fila->PosY);
 
     if(nodo_Columna != 0 && nodo_Fila !=0 ){
-        string cod="";
-        if(puesto=="FRONTED DEVELOPER"){
-            cod="FDEV-";
-            if(contador_frontend<10){
-                cod+= "00"+to_string(contador_frontend);
-            }
-            else if(contador_frontend>9 && contador_frontend<100){
-                cod+= "0"+to_string(contador_frontend);
-            } else{
-                cod+=to_string(contador_frontend);
-            }
-            contador_frontend++;
-        }
-
-        else if(puesto=="BACKEND DEVELOPER"){
-                cod="BDEV-";
-            if(contador_backend<10){
-                cod+= "00"+to_string(contador_backend);
-            }
-            else if(contador_backend>9 && contador_backend<100){
-                cod+= "0"+to_string(contador_backend);
-            } else{
-                cod+=to_string(contador_backend);
-            }
-            contador_backend++;
-        }
-        else if(puesto=="QUALITY ASSURANCE"){
-            cod="QA-";
-            if(contador_qality<10){
-                cod+= "00"+to_string(contador_qality);
-            }
-            else if(contador_qality>9 && contador_qality<100){
-                cod+= "0"+to_string(contador_qality);
-            } else{
-                cod+=to_string(contador_qality);
-            }
-            contador_qality++;
-        }else{
-            cout<<"Puesto no valido"<<endl;
-            return;
-        }
-
-        NodoMatriz *nuevo = new NodoMatriz(nodo_Columna->Proyecto_c, nodo_Fila->Encargado_c, nodo_Columna->PosX, nodo_Fila->PosY,cod);
-
         nuevo=this->insertar_columna(nuevo, nodo_Fila);
         nuevo=this->insertar_fila(nuevo, nodo_Columna);
-
-        system("cls");
-        cout<<"Proyecto asignado con exito......"<<endl;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        system("cls");
         return;
     }
     else{
@@ -223,7 +169,7 @@ NodoMatriz* Matriz::buscarF_1(std::string nombre)
     NodoMatriz *aux = this->Raiz;
     while(aux != 0)
     {
-        if(aux->Encargado_c->user_name.compare(nombre) == 0)
+        if(aux->Encargado_c->Nombre.compare(nombre) == 0)
         {
             return aux;
         }
@@ -237,7 +183,7 @@ NodoMatriz* Matriz::buscarC_1(std::string codigo)
     NodoMatriz *aux = this->Raiz;
     while(aux != 0)
     {
-        if(aux->Proyecto_c->numeroProyecto.compare(codigo) == 0)
+        if(aux->Proyecto_c->Codigo.compare(codigo) == 0)
         {
             return aux;
         }
@@ -256,7 +202,6 @@ void Matriz::Graficar()
 	NodoMatriz *aux2 = this->Raiz;
 	NodoMatriz *aux3 = this->Raiz;
 	archivo.open(nombre_archivo, ios::out);
-
 	if ( aux1 != 0 ) {
 		archivo << "digraph MatrizCapa{ \n node[shape=box] \n rankdir=UD;\n";
         /** Creacion de los nodos actuales */
@@ -265,28 +210,11 @@ void Matriz::Graficar()
             aux1 = aux1->Siguiente;
         }
         archivo << "}";*/
-        char pry='A';
         while( aux2 != 0 ) {
             aux1 = aux2;
             archivo << "{rank=same; \n";
             while( aux1 != 0 ) {
-                if(aux1->Proyecto_c)
-                {
-                    if(aux1->Encargado_c)
-                    {
-                        if(aux1->Proyecto_c->prioridad!=NULL){
-                         archivo << "nodo" << aux1 << "[label=\"" << aux1->Proyecto_c->numeroProyecto << "\\n" << aux1->puesto<< "\\n"<<"Priorida:"<<aux1->Proyecto_c->prioridad <<"\" ,group=" << (aux1->PosX+1) << "]; \n";
-                        }
-                        else{
-                            archivo << "nodo" << aux1 << "[label=\"" << aux1->Proyecto_c->numeroProyecto << "\\n" << aux1->puesto<< "\\n" <<"\" ,group=" << (aux1->PosX+1) << "]; \n";
-                        }
-                    }else{
-                        archivo << "nodo" << aux1 << "[label=\"" << "PROYECTO " <<pry++<< "\" ,group=" << (aux1->PosX+1) << "]; \n";
-                    }
-                }else if(aux1->Encargado_c)
-                {
-                    archivo << "nodo" << aux1 << "[label=\"" << aux1->Encargado_c->user_name << "\" ,group=" << (aux1->PosX+1) << "]; \n";
-                }
+                archivo << "nodo" << (aux1->PosX+1) << (aux1->PosY+1) << "[label=\"" << aux1->Proyecto_c->Codigo << "\" ,group=" << (aux1->PosX+1) << "]; \n";
                 aux1 = aux1->Siguiente;
             }
             archivo << "} \n";
@@ -297,7 +225,7 @@ void Matriz::Graficar()
         while( aux2 != 0 ) {
             aux1 = aux2;
             while( aux1->Siguiente != 0 ) {
-                archivo << "nodo" << aux1 << " -> " << "nodo" << aux1->Siguiente << " [dir=both];\n";
+                archivo << "nodo" << (aux1->PosX+1) << (aux1->PosY+1) << " -> " << "nodo" << (aux1->Siguiente->PosX+1) << (aux1->Siguiente->PosY+1) << " [dir=both];\n";
                 aux1 = aux1->Siguiente;
             }
             aux2 = aux2->Abajo;
@@ -306,7 +234,7 @@ void Matriz::Graficar()
         while( aux2 != 0 ) {
             aux1 = aux2;
             while( aux1->Abajo != 0 ) {
-                archivo << "nodo" << aux1 << " -> " << "nodo" << aux1->Abajo << " [dir=both];\n";
+                archivo << "nodo" << (aux1->PosX+1) << (aux1->PosY+1) << " -> " << "nodo" << (aux1->Abajo->PosX+1) << (aux1->Abajo->PosY+1) << " [dir=both];\n";
                 aux1 = aux1->Abajo;
             }
             aux2 = aux2->Siguiente;
@@ -323,6 +251,6 @@ void Matriz::Graficar()
     codigo_cmd+=nombre_imagen;
     char j[codigo_cmd.size()+1];
     strcpy(j,codigo_cmd.c_str());
-    //cout << j << endl;
+    cout << j << endl;
     system(j);
 }

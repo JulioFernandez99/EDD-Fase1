@@ -1,8 +1,8 @@
 #ifndef LISTA_H
 #define LISTA_H
-#include <cctype> // Necesario para tolower
-#include <string>
 #include "NodoLista.h"
+#include <string>
+
 using namespace std;
 
 
@@ -16,7 +16,6 @@ class Lista
         void verLista();
         bool buscar(string user_name,string user_pass);
         void cargaMasiva(string ruta);
-        void pop();
         Lista();
         virtual ~Lista();
 
@@ -24,4 +23,5 @@ class Lista
 
     private:
 };
+
 #endif // LISTA_H
