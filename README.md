@@ -290,7 +290,7 @@ Para poder asignar proyectos se solicitara el nombre del empleado,el codigo del 
         }
         return 0;
     }
-</details>details>
+</details>
 
 ## Asignar tareas
 Aca se utilizo la cola de prioridad ya antes mencionada,a cada clase proyecto inicialmente se le definio una lista doblemnte enlazada vacia a la cual se le podra ir agregando proyectos con su funcion push.Para poder asignar una tarea se solicita inicialmente el proyecto para poder buscarlo en la cola de prioridad nodo por nodo y si coincide con alguno se accede al objeto proyecto y sus tareas y se procede a hacerke push a la lista doblemente enlazada.
