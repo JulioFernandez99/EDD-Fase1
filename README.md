@@ -104,9 +104,6 @@ Para esta parte inicialemnte se desplegara un filechooser que se encargara de de
 </details>
 
 ## Crear proyectos
-
-<details>
-<summary>Descripcion</summary>
 En este apartado se solicitara el nombre del proyecto y la prioridad.Para que esta parte fuera funcional se trabajo con una cola de prioridad,donde "A" es la prioridad mas alta y "C" la mas baja,para ello se definio un una clase empleado que se encarga de almacenar los datos del proyecto y generar un proyecto para cada uno,luego se definio una clase Cola con la funcion push que se encarga de recibir la prioridad y nombre del proyecto,antes de agregar el nuevo nodo se realiza una verificacion para insertar el nodo en la posicion correcta.
 <details>
 <summary>Codigo</summary>
